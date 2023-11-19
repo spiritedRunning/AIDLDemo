@@ -14,8 +14,9 @@ public interface IMyAidlInterface extends android.os.IInterface
     {
       return null;
     }
-    @Override public void getPersonInfo(com.example.aidldemo.Person info) throws android.os.RemoteException
+    @Override public java.lang.String getPersonInfo(com.example.aidldemo.Person info) throws android.os.RemoteException
     {
+      return null;
     }
     @Override public void convertPeople(com.example.aidldemo.Person people) throws android.os.RemoteException
     {
@@ -100,8 +101,9 @@ public interface IMyAidlInterface extends android.os.IInterface
           data.enforceInterface(descriptor);
           com.example.aidldemo.Person _arg0;
           _arg0 = new com.example.aidldemo.Person();
-          this.getPersonInfo(_arg0);
+          java.lang.String _result = this.getPersonInfo(_arg0);
           reply.writeNoException();
+          reply.writeString(_result);
           if ((_arg0!=null)) {
             reply.writeInt(1);
             _arg0.writeToParcel(reply, android.os.Parcelable.PARCELABLE_WRITE_RETURN_VALUE);
@@ -210,18 +212,19 @@ public interface IMyAidlInterface extends android.os.IInterface
         }
         return _result;
       }
-      @Override public void getPersonInfo(com.example.aidldemo.Person info) throws android.os.RemoteException
+      @Override public java.lang.String getPersonInfo(com.example.aidldemo.Person info) throws android.os.RemoteException
       {
         android.os.Parcel _data = android.os.Parcel.obtain();
         android.os.Parcel _reply = android.os.Parcel.obtain();
+        java.lang.String _result;
         try {
           _data.writeInterfaceToken(DESCRIPTOR);
           boolean _status = mRemote.transact(Stub.TRANSACTION_getPersonInfo, _data, _reply, 0);
           if (!_status && getDefaultImpl() != null) {
-            getDefaultImpl().getPersonInfo(info);
-            return;
+            return getDefaultImpl().getPersonInfo(info);
           }
           _reply.readException();
+          _result = _reply.readString();
           if ((0!=_reply.readInt())) {
             info.readFromParcel(_reply);
           }
@@ -230,6 +233,7 @@ public interface IMyAidlInterface extends android.os.IInterface
           _reply.recycle();
           _data.recycle();
         }
+        return _result;
       }
       @Override public void convertPeople(com.example.aidldemo.Person people) throws android.os.RemoteException
       {
@@ -305,7 +309,7 @@ public interface IMyAidlInterface extends android.os.IInterface
   }
   public void addPerson(com.example.aidldemo.Person person) throws android.os.RemoteException;
   public java.lang.String modifyPerson(com.example.aidldemo.Person person) throws android.os.RemoteException;
-  public void getPersonInfo(com.example.aidldemo.Person info) throws android.os.RemoteException;
+  public java.lang.String getPersonInfo(com.example.aidldemo.Person info) throws android.os.RemoteException;
   public void convertPeople(com.example.aidldemo.Person people) throws android.os.RemoteException;
   public java.util.List<com.example.aidldemo.Person> getPersonList() throws android.os.RemoteException;
 }

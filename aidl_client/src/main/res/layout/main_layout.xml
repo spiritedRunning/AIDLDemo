@@ -9,7 +9,13 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="get data"/>
+        android:text="AIDL"/>
+
+    <Button
+        android:id="@+id/button_messenger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Messenger"/>
 
 
 </LinearLayout>

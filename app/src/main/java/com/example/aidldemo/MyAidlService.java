@@ -12,16 +12,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyAidlService extends Service {
-    private static final String TAG = "MyAidlService";
+    private static final String TAG = "zach";
     private List<Person> persons;
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        persons = new ArrayList<>();
-        Log.e(TAG, "onBind succ");
+        //persons = new ArrayList<>();
+        //Log.e(TAG, "onBind succ");
 
         return iBinder;
+    }
+
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
     }
 
     private IBinder iBinder = new IMyAidlInterface.Stub() {
@@ -36,8 +43,8 @@ public class MyAidlService extends Service {
         }
 
         @Override
-        public void getPersonInfo(Person info) throws RemoteException {
-
+        public String getPersonInfo(Person info) throws RemoteException {
+            return "";
         }
 
         @Override
@@ -54,7 +61,7 @@ public class MyAidlService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(TAG, "onCreate");
+        Log.e(TAG, "MyAidlService onCreate");
 
     }
 }

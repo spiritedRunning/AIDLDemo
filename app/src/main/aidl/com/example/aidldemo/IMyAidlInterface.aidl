@@ -9,7 +9,7 @@ interface IMyAidlInterface {
     oneway void addPerson(in Person person);
 
     String modifyPerson(in Person person);
-    void getPersonInfo(out Person info);
+    String getPersonInfo(out Person info);
     void convertPeople(inout Person people);
     List<Person> getPersonList();
 

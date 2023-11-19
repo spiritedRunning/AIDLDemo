@@ -686,6 +686,7 @@ id blocking
 id bottom
 id button
 id buttonPanel
+id button_messenger
 id center_vertical
 id checkbox
 id checked
